@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    {% include "meta-data.html" %}
+</head>
+
+<body>
+    {% include 'navigation.html' %}
+    <br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 mt-3">
+                <a href="{{ url_for('vegetablesAndFruits') }}"><img src="../static/images/arrowback.svg" height="40px" width="50%"></a>
+            </div>
+            <div class="col-6">
+                <img src="{{vegetables_fruits_id.image}}" alt="" height="325px" width="100%">
+            </div>
+            <div class="col-4 mt-5">
+                <h3 class="font-weight-bold text-center">
+                    <button onclick="playAudio()">
+                        <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                    </button>
+                    {{ vegetables_fruits_id.word }}
+                </h3>
+                <br>
+                <h3 class="font-weight-bold text-center">{{ vegetables_fruits_id.pronunciation }}</h3><br>
+                <h3 class="text-success text-center"> {{ vegetables_fruits_id.mean }} </h3><br>
+                <div class="row ml-5">
+                    <div class="col-6 mt-2 ml-5">
+                        {% if user is none %}
+                            <form method = "POST">
+                                <button type="submit" class="w3-button w3-block w3-light-blue"> SAVE WORD</button>   
+                            </form>
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                <div class="alert alert-warning">
+                                    {{ messages[0] }}
+                                </div>
+                                {% endif %}
+                                {% endwith %}
+                        {% else %}  
+                                <form method = "POST">
+                                    <button type="submit" class="w3-button w3-block w3-light-blue"> SAVE WORD</button>   
+                                </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <br>
+    <audio id="myAudio">
+        <source src="{{vegetables_fruits_id.audio_link}}" type="audio/ogg">
+    </audio>
+    <script>
+        var x = document.getElementById("myAudio");
+        function playAudio() {
+            x.play();
+        }
+    </script>
+    {% include 'homepage/footer.html' %}
+</body>
+
+</html>

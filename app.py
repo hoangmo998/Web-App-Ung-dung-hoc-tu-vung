@@ -1,6 +1,7 @@
 from flask import *
 import bcrypt
 from models.user import User
+from models.vegetablesFruits import Vegetablesfruits
 import mlab
 
 app = Flask(__name__)
@@ -63,6 +64,73 @@ def register():
 def logout():
     del session["username"]
     return redirect("/login")
+
+@app.route('/learn')
+def learn():
+    user = session.get('username')
+    return render_template("learn.html",
+                            user = user,
+                           )
+
+@app.route('/vegetablesAndFruits')
+def vegetablesAndFruits():
+    user = session.get('username')
+    list_audio = []
+    list_word  = []
+    list_image = []
+    list_pronunciation = []
+    list_id = []
+     # get all document from dabase
+    total_vegetablesAndFruits = Vegetablesfruits.objects()
+    for i in total_vegetablesAndFruits:
+        audio = i.audio_link
+        word  = i.word
+        image = i.image
+        pronunciation = i.pronunciation
+        id = i.id
+        list_audio.append(audio)
+        list_word.append(word)
+        list_image.append(image)
+        list_pronunciation.append(pronunciation)
+        list_id.append(id)
+    return render_template("vegetablesAndFruits.html",
+                            list_audio=list_audio,
+                            list_word=list_word,
+                            list_image=list_image,
+                            list_pronunciation=list_pronunciation,
+                            list_id=list_id,
+                            user = user,
+                           )
+
+@app.route('/vegetablesAndFruitsDetail/<id>', methods = ["GET","POST"])
+def vegetablesAndFruitsDetail(id):
+    user = session.get('username')
+    vegetables_fruits_id = Vegetablesfruits.objects.with_id(id)
+   
+    if request.method == "GET":
+        return render_template("vegetablesAndFruitsDetail.html",
+                                vegetables_fruits_id=vegetables_fruits_id,
+                                user = user,
+                               )
+    else:
+        if user is not None:
+            wordReview = Reviews(
+                image = vegetables_fruits_id.image,
+                word = vegetables_fruits_id.word,
+                pronunciation= vegetables_fruits_id.pronunciation,
+                mean =vegetables_fruits_id.mean,
+                audio_link = vegetables_fruits_id.audio_link,
+                username = user
+            )
+            wordReview.save()        
+            return redirect(url_for('vegetablesAndFruits'))  
+        else:
+            flash('You must login first !')
+            return render_template("vegetablesAndFruitsDetail.html",
+                                    vegetables_fruits_id=vegetables_fruits_id,
+                                    user=user,
+                                   ) 
+
 
 if __name__ == '__main__':
     app.run(debug=True)
