@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn Vocabulary</title>
+    {% include "meta-data.html" %}
+    <style>
+        .noAccount{
+            color: rgb(46, 135, 232);
+            border: 3px solid rgb(46, 135, 232);
+            background: #ffffff;
+        }
+        .noAccount:hover{
+            border-color: black;
+            background-color: rgb(46, 135, 232);
+            color: #ffffff;
+        }
+        .logined{
+            color: rgb(200, 18, 18);
+            border: 3px solid rgb(200, 18, 18);
+            background: #ffffff;
+        }
+        .logined:hover{
+            border-color: black;
+            background-color: rgb(200, 18, 18);
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top hover-icon">
+        <img src="../../static/images/Capture.PNG" width="auto" height="90px" alt="">
+        <div class="collapse navbar-collapse d-flex justify-content-end " id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{{ url_for('login') }}" class="nav-link w3-hover-text-blue">
+                        <h3 class="font-weight-bold"> Log In</h3>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+    <h1 class="text-center font-weight-bold">༄༄ IMPROVE YOUR ENGLISH VOCABULARY ༄༄</h1>
+    <img src="../static/images/home.PNG" alt="" height="190px" width="100%">
+   <br><br>
+    <h1 class="text-center font-weight-bold">Log in to track your progress</h1><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <a href="{{ url_for('login') }}"  style="text-decoration:none" ><button type="button"
+                        class="btn-block w3-round-large logined">
+                        <h5 class="font-weight-bold">Log In</h5>
+                    </button></a>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div><br>
+    <hr style="  border: 3px solid rgb(46, 135, 232); margin-left: 130px" width="80%">
+    <div class="container">
+        <h2 class="text-center font-weight-bold">Or start learning without registering </h2><br>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+            <a href="#"  style="text-decoration:none;"><button type="button"
+                        class="btn-block w3-round-large noAccount">
+                        <h5 class="font-weight-bold">Let's Go</h5>
+                    </button></a>
+            </div>
+            <div class="col-3"></div>
+        </div>    
+    </div>
+    <br><br>
+    {% include 'homepage/footer.html' %}
+
+</body>
+
+</html>
