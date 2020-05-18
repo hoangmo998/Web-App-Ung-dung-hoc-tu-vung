@@ -3,7 +3,7 @@ import bcrypt
 from models.user import User
 import mlab
 
-app = Flask(_name_)
+app = Flask(__name__)
 app.secret_key = 'mysecret'
 mlab.connect()
 
@@ -63,3 +63,6 @@ def register():
 def logout():
     del session["username"]
     return redirect("/login")
+
+if __name__ == '__main__':
+    app.run(debug=True)
