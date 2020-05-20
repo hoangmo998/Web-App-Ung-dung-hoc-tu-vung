@@ -35,7 +35,7 @@ def login():
             if session['username'] == "admin" and session['password'] == "admin":
                 return redirect(url_for('admin'))
             else:
-                return redirect(url_for('#'))
+                return redirect(url_for('learn'))
     flash('Username or password wrong! Please try again!')
     return redirect(url_for('login'))
 
@@ -131,6 +131,65 @@ def vegetablesAndFruitsDetail(id):
                                     user=user,
                                    ) 
 
+@app.route('/animals')
+def animals():
+    user = session.get('username')
+    list_audio = []
+    list_word  = []
+    list_image = []
+    list_pronunciation = []
+    list_id = []
+     # get all document from dabase
+    total_animals = Animals.objects()
+    for i in total_animals:
+        audio = i.audio_link
+        word  = i.word
+        image = i.image
+        pronunciation = i.pronunciation
+        id = i.id
+        list_audio.append(audio)
+        list_word.append(word)
+        list_image.append(image)
+        list_pronunciation.append(pronunciation)
+        list_id.append(id)
+    return render_template("animals.html",
+                            list_audio=list_audio,
+                            list_word=list_word,
+                            list_image=list_image,
+                            list_pronunciation=list_pronunciation,
+                            list_id=list_id,
+                            user=user,
+                            )
+
+
+@app.route('/animalDetail/<id>', methods = ["GET","POST"])
+def animalDetail(id):
+    user = session.get('username')
+    animal_id = Animals.objects.with_id(id)
+    
+    if request.method == "GET":
+        return render_template("animalDetail.html",
+                                animal_id=animal_id,
+                                user=user,
+                                )
+    else:
+        if user is not None:
+            wordReview = Reviews(
+                image = animal_id.image,
+                word = animal_id.word,
+                pronunciation= animal_id.pronunciation,
+                mean =animal_id.mean,
+                audio_link = animal_id.audio_link,
+                username = user
+            )
+            wordReview.save()        
+            return redirect(url_for('animals'))
+        else:
+            flash('You must login first !')
+            return render_template("animalDetail.html",
+                                    animal_id=animal_id,
+                                    user=user,
+                                  ) 
 
 if __name__ == '__main__':
     app.run(debug=True)
