@@ -2,6 +2,7 @@ from flask import *
 import bcrypt
 from models.user import User
 from models.vegetablesFruits import Vegetablesfruits
+from models.animal import Animals
 import mlab
 
 app = Flask(__name__)
