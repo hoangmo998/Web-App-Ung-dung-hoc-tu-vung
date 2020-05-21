@@ -192,5 +192,65 @@ def animalDetail(id):
                                     user=user,
                                   ) 
 
+@app.route('/food')
+def food():
+    user = session.get('username')
+    
+    list_audio = []
+    list_word  = []
+    list_image = []
+    list_pronunciation = []
+    list_id = []
+     # get all document from dabase
+    total_food = Food.objects()
+    for i in total_food:
+        audio = i.audio_link
+        word  = i.word
+        image = i.image
+        pronunciation = i.pronunciation
+        id = i.id
+        list_audio.append(audio)
+        list_word.append(word)
+        list_image.append(image)
+        list_pronunciation.append(pronunciation)
+        list_id.append(id)
+    return render_template("food.html",
+                            list_audio=list_audio,
+                            list_word=list_word,
+                            list_image=list_image,
+                            list_pronunciation=list_pronunciation,
+                            list_id=list_id,
+                            user=user,
+                           )
+
+@app.route('/foodDetail/<id>', methods = ["GET","POST"])
+def foodDetail(id):
+    user = session.get('username')
+    food_id = Food.objects.with_id(id)
+   
+    if request.method == "GET":
+        return render_template("foodDetail.html",
+                                food_id=food_id,
+                                user=user,
+                                )
+    else:
+        if user is not None:
+            wordReview = Reviews(
+                image = food_id.image,
+                word = food_id.word,
+                pronunciation= food_id.pronunciation,
+                mean =food_id.mean,
+                audio_link = food_id.audio_link,
+                username = user
+            )
+            wordReview.save()        
+            return redirect(url_for('food'))
+        else:
+            flash('You must login first !')
+            return render_template("foodDetail.html",
+                                    food_id=food_id,
+                                    user=user,
+                                ) 
+
 if __name__ == '__main__':
     app.run(debug=True)

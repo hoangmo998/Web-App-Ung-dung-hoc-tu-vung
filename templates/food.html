@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Food</title>
+    {% include "meta-data.html" %}
+
+</head>
+
+<body>
+    {% include 'navigation.html' %}
+    <br><br><br><br>
+    <div class="container mt-5">
+        <div class="row mt-3 p-2">
+            <!-- 1 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[0]) }}">
+                            <img src="{{list_image[0]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio1()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[0]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[0]}}</h5>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[1]) }}">
+                            <img src="{{list_image[1]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio2()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[1]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[1]}}</h5>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[2]) }}">
+                            <img src="{{list_image[2]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio3()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[2]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[2]}}</h5>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[3]) }}">
+                            <img src="{{list_image[3]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio4()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[3]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[3]}}</h5>
+                </div>
+            </div>
+        </div>  
+        <!--  -->
+        <div class="row mt-3 p-2">
+            <!-- 5 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[4]) }}">
+                            <img src="{{list_image[4]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio5()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[4]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[4]}}</h5>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[5]) }}">
+                            <img src="{{list_image[5]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio6()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[5]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[5]}}</h5>
+                </div>
+            </div>
+            <!-- 7 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[6]) }}">
+                            <img src="{{list_image[6]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio7()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[6]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[6]}}</h5>
+                </div>
+            </div>
+            <!-- 8 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[7]) }}">
+                            <img src="{{list_image[7]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio8()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[7]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[7]}}</h5>
+                </div>
+            </div>
+        </div>
+        <!--  --> 
+        <div class="row mt-3 p-2">
+            <!-- 9 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[8]) }}">
+                            <img src="{{list_image[8]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio9()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[8]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[8]}}</h5>
+                </div>
+            </div>
+            <!-- 10 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[9]) }}">
+                            <img src="{{list_image[9]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio10()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[9]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[9]}}</h5>
+                </div>
+            </div>
+            <!-- 11 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[10]) }}">
+                            <img src="{{list_image[10]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio11()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[10]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[10]}}</h5>
+                </div>
+            </div>
+            <!-- 12 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[11]) }}">
+                            <img src="{{list_image[11]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio12()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[11]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[11]}}</h5>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="row mt-3 p-2">
+            <!-- 13 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[12]) }}">
+                            <img src="{{list_image[12]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio13()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[12]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[12]}}</h5>
+                </div>
+            </div>
+            <!-- 14 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[13]) }}">
+                            <img src="{{list_image[13]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio14()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[13]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[13]}}</h5>
+                </div>
+            </div>
+            <!-- 15 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[14]) }}">
+                            <img src="{{list_image[14]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio15()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[14]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[14]}}</h5>
+                </div>
+            </div>
+            <!-- 16 -->
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('foodDetail',id = list_id[15]) }}">
+                            <img src="{{list_image[15]}}" class="card-img-top  w3-hover-opacity" alt="" height="200px">
+                        </a>
+                    </div>
+                    <h5 class="card-title text-center w3-hover-text-blue">
+                        <button onclick="playAudio16()">
+                            <i class='fas fa-volume-up w3-hover-text-blue' style='font-size:24px'></i>
+                        </button>
+                        {{list_word[15]}}
+                    </h5>
+                    <h5 class="card-title text-center w3-hover-text-blue">{{list_pronunciation[15]}}</h5>
+                </div>
+            </div>
+        </div>
+ 
+ 
+    </div>  
+        <!-- Audio -->
+        <audio id="myAudio1">
+            <source src="{{list_audio[0]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio2">
+            <source src="{{list_audio[1]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio3">
+            <source src="{{list_audio[2]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio4">
+            <source src="{{list_audio[3]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio5">
+            <source src="{{list_audio[4]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio6">
+            <source src="{{list_audio[5]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio7">
+            <source src="{{list_audio[6]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio8">
+            <source src="{{list_audio[7]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio9">
+            <source src="{{list_audio[8]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio10">
+            <source src="{{list_audio[9]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio11">
+            <source src="{{list_audio[10]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio12">
+            <source src="{{list_audio[11]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio13">
+            <source src="{{list_audio[12]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio14">
+            <source src="{{list_audio[13]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio15">
+            <source src="{{list_audio[14]}}" type="audio/ogg">
+        </audio>
+        <audio id="myAudio16">
+            <source src="{{list_audio[15]}}" type="audio/ogg">
+        </audio>
+        <script>
+            var x = document.getElementById("myAudio1");
+            var x2 = document.getElementById("myAudio2");
+            var x3 = document.getElementById("myAudio3");
+            var x4 = document.getElementById("myAudio4");
+            var x5 = document.getElementById("myAudio5");
+            var x6 = document.getElementById("myAudio6");
+            var x7 = document.getElementById("myAudio7");
+            var x8 = document.getElementById("myAudio8");
+            var x9 = document.getElementById("myAudio9");
+            var x10 = document.getElementById("myAudio10");
+            var x11 = document.getElementById("myAudio11");
+            var x12 = document.getElementById("myAudio12");
+            var x13 = document.getElementById("myAudio13");
+            var x14 = document.getElementById("myAudio14");
+            var x15 = document.getElementById("myAudio15");
+            var x16 = document.getElementById("myAudio16");
+            function playAudio1() {
+                x.play();
+            }
+            function playAudio2() {
+                x2.play();
+            } 
+            function playAudio3() {
+                x3.play();
+            } 
+            function playAudio4() {
+                x4.play();
+            } 
+            function playAudio5() {
+                x5.play();
+            } 
+            function playAudio6() {
+                x6.play();
+            } 
+            function playAudio7() {
+                x7.play();
+            } 
+            function playAudio8() {
+                x8.play();
+            } 
+            function playAudio9() {
+                x9.play();
+            } 
+            function playAudio10() {
+                x10.play();
+            } 
+            function playAudio11() {
+                x11.play();
+            } 
+            function playAudio12() {
+                x12.play();
+            } 
+            function playAudio13() {
+                x13.play();
+            } 
+            function playAudio14() {
+                x14.play();
+            } 
+            function playAudio15() {
+                x15.play();
+            } 
+            function playAudio16() {
+                x16.play();
+            } 
+        </script>
+        <br>
+   {% include 'homepage/footer.html' %}
+</body>
+
+</html>
