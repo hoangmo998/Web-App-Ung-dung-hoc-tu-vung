@@ -3,6 +3,7 @@ import bcrypt
 from models.user import User
 from models.vegetablesFruits import Vegetablesfruits
 from models.animal import Animals
+from models.actions import Actions
 import mlab
 
 app = Flask(__name__)
@@ -251,6 +252,67 @@ def foodDetail(id):
                                     food_id=food_id,
                                     user=user,
                                 ) 
+
+@app.route('/actions')
+def actions():
+    user = session.get('username')
+    
+    list_audio = []
+    list_word  = []
+    list_image = []
+    list_pronunciation = []
+    list_id = []
+     # get all document from dabase
+    total_actions = Actions.objects()
+    for i in total_actions:
+        audio = i.audio_link
+        word  = i.word
+        image = i.image
+        pronunciation = i.pronunciation
+        id = i.id
+        list_audio.append(audio)
+        list_word.append(word)
+        list_image.append(image)
+        list_pronunciation.append(pronunciation)
+        list_id.append(id)
+    return render_template("actions.html",
+                            list_audio=list_audio,
+                            list_word=list_word,
+                            list_image=list_image,
+                            list_pronunciation=list_pronunciation,
+                            list_id=list_id,
+                            user=user,
+                           )
+
+@app.route('/actionsDetail/<id>', methods = ["GET","POST"])
+def actionsDetail(id):
+    user = session.get('username')
+    actions_id = Actions.objects.with_id(id)
+
+    if request.method == "GET":
+        
+        return render_template("actionsDetail.html",
+                                actions_id=actions_id,
+                                user=user,
+                                )
+    else:
+        if user is not None:
+            wordReview = Reviews(
+                image = actions_id.image,
+                word = actions_id.word,
+                pronunciation= actions_id.pronunciation,
+                mean =actions_id.mean,
+                audio_link = actions_id.audio_link,
+                username = user
+            )
+            wordReview.save()        
+            return redirect(url_for('actions'))
+        else:
+            flash('You must login first !')
+            return render_template("actionsDetail.html",
+                                    actions_id=actions_id,
+                                    user=user,
+                                 ) 
 
 if __name__ == '__main__':
     app.run(debug=True)
