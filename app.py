@@ -327,6 +327,13 @@ def video():
                             user = user,
                           )
 
+@app.route('/detailVideo/<youtube_id>')
+def detailVideo(youtube_id):
+    user = session.get('username')
+    return render_template("detailVideo.html",
+                            youtube_id = youtube_id,
+                            user = user,
+                            )
 
 if __name__ == '__main__':
     app.run(debug=True)

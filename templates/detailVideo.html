@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Video</title>
+    {% include "meta-data.html" %}
+</head>
+<body>
+    
+    {% include 'navigation.html' %}
+    <br><br><br><br><br>
+    <div class="container"><br>
+        <div>
+            <a href="{{ url_for('video')}}">
+                <button class="btn btn-outline-warning w3-round-xlarge w3-large" style="margin-left: 450px; color: black;"> < To the catalog</button>
+            </a>
+        </div><br>
+        <div style="margin-left:50px">
+            <iframe 
+                width="1000" 
+                height="500" 
+                src="https://www.youtube.com/embed/{{ youtube_id }}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe> 
+        </div>
+    </div>
+    <br><br>
+    {% include 'homepage/footer.html' %}
+</body>
+</html>
