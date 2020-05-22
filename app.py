@@ -290,6 +290,7 @@ def actionsDetail(id):
     actions_id = Actions.objects.with_id(id)
 
     if request.method == "GET":
+        
         return render_template("actionsDetail.html",
                                 actions_id=actions_id,
                                 user=user,

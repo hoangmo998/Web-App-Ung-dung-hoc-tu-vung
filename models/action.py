@@ -1,4 +1,5 @@
 from mongoengine import Document,StringField 
+
 class Actions(Document):
     image = StringField()
     word = StringField()
