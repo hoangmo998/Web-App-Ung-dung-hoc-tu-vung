@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    {% include "meta-data.html" %}
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <br><br><br><br><br>
+    <h1 class="text-center font-weight-bold"> >> Video catalog << </h1>
+    <hr style="  border: 3px solid yellow; margin-left: 130px" width="80%">
+    <div class="container my-4 mr-4 pl-2 pt-3">
+        <div class="row">
+             {% for video in videos %}
+             <div class="col-md-4">
+                <div class="card" style="width: 24rem;">
+                    <div class="w3-display-container">
+                        <a href="{{ url_for('detailVideo',youtube_id = video.youtube_id) }}"> 
+                            <img src="{{video.thumbnail}}" class="card-img-top w3-hover-opacity" alt="" height="350px" >
+                        </a>
+                        <div class="w3-display-middle w3-display-hover">
+                            <a href="{{ url_for('detailVideo',youtube_id = video.youtube_id) }}">                  
+                                <button type="button" class="w3-button w3-red w3-circle w3-xxlarge"><i class="fas fa-play"></i></button>
+                            </a>
+                        </div>
+                    </div>
+                   
+                    <div class="card-body  justify-content-center">
+                        <h5 class="card-title text-center font-weight-bold">{{video.title}}</h5> 
+                        <span><i class="far fa-eye"></i> {{ video.views}} views</span>                      
+                    </div>
+                </div>
+                    <br>
+             </div>
+       {% endfor %}
+        </div>
+    </div>
+    <br><br>
+    {% include 'homepage/footer.html' %}
+
+</body>
+</html>

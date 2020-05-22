@@ -4,6 +4,8 @@ from models.user import User
 from models.vegetablesFruits import Vegetablesfruits
 from models.animal import Animals
 from models.actions import Actions
+from models.video import Video
+from youtube_dl import YoutubeDL
 import mlab
 
 app = Flask(__name__)
@@ -313,6 +315,18 @@ def actionsDetail(id):
                                     actions_id=actions_id,
                                     user=user,
                                  ) 
+
+@app.route('/video')
+def video():
+    user = session.get('username')
+    allWordSave = Reviews.objects()
+   
+    videos = Video.objects()
+    return render_template("videos.html",
+                            videos = videos,
+                            user = user,
+                          )
+
 
 if __name__ == '__main__':
     app.run(debug=True)
