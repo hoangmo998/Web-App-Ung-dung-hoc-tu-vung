@@ -52,23 +52,23 @@
                             <button class="dropdown-item" type="button"><a href="{{url_for('food')}}" class="nav-link w3-hover-text-blue">
                                 <i class="fas fa-hamburger"></i> Food
                             </a></button>
-                            <button class="dropdown-item" type="button"><a href="#" class="nav-link w3-hover-text-blue">
+                            <button class="dropdown-item" type="button"><a href="{{url_for('actions')}}" class="nav-link w3-hover-text-blue">
                                 <i class="fas fa-running"></i> Action
                             </a></button>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link w3-hover-text-blue pb-0" href="#"> <i class="fas fa-video"></i>
+                    <a class="nav-link w3-hover-text-blue pb-0" href="{{url_for('video')}}"> <i class="fas fa-video"></i>
                         Video
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <div class="cart-hover">
-                        <a href="#">
+                        <a href="{{url_for('review')}}">
                           <img src="../static/images/reviewbook.jpg" class="w3-hover-text-blue" width="35px" height="29px">
-                            <span class="ctn crl-bg"></span>
+                            <span class="ctn crl-bg">{{ numberOfWords }}</span>
                         </a>                      
                     </div>
                 </li>
