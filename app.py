@@ -3,8 +3,10 @@ import bcrypt
 from models.user import User
 from models.vegetablesFruits import Vegetablesfruits
 from models.animal import Animals
-from models.actions import Actions
+from models.action import Actions
+from models.food import Food
 from models.video import Video
+from models.review import Reviews
 from youtube_dl import YoutubeDL
 import mlab
 
@@ -19,8 +21,14 @@ def index():
 @app.route('/navigation')
 def navigation():
     user = session.get('username')
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     return render_template("navigation.html",
                             user=user,
+                            numberOfWords=numberOfWords
                           )
 
 @app.route("/login", methods = ["GET","POST"])
@@ -72,13 +80,24 @@ def logout():
 @app.route('/learn')
 def learn():
     user = session.get('username')
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     return render_template("learn.html",
                             user = user,
+                            numberOfWords=numberOfWords
                            )
 
 @app.route('/vegetablesAndFruits')
 def vegetablesAndFruits():
     user = session.get('username')
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     list_audio = []
     list_word  = []
     list_image = []
@@ -104,17 +123,23 @@ def vegetablesAndFruits():
                             list_pronunciation=list_pronunciation,
                             list_id=list_id,
                             user = user,
+                            numberOfWords=numberOfWords
                            )
 
 @app.route('/vegetablesAndFruitsDetail/<id>', methods = ["GET","POST"])
 def vegetablesAndFruitsDetail(id):
     user = session.get('username')
     vegetables_fruits_id = Vegetablesfruits.objects.with_id(id)
-   
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     if request.method == "GET":
         return render_template("vegetablesAndFruitsDetail.html",
                                 vegetables_fruits_id=vegetables_fruits_id,
                                 user = user,
+                                numberOfWords=numberOfWords
                                )
     else:
         if user is not None:
@@ -133,11 +158,17 @@ def vegetablesAndFruitsDetail(id):
             return render_template("vegetablesAndFruitsDetail.html",
                                     vegetables_fruits_id=vegetables_fruits_id,
                                     user=user,
+                                    numberOfWords=numberOfWords
                                    ) 
 
 @app.route('/animals')
 def animals():
     user = session.get('username')
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     list_audio = []
     list_word  = []
     list_image = []
@@ -163,6 +194,7 @@ def animals():
                             list_pronunciation=list_pronunciation,
                             list_id=list_id,
                             user=user,
+                            numberOfWords=numberOfWords
                             )
 
 
@@ -170,11 +202,16 @@ def animals():
 def animalDetail(id):
     user = session.get('username')
     animal_id = Animals.objects.with_id(id)
-    
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     if request.method == "GET":
         return render_template("animalDetail.html",
                                 animal_id=animal_id,
                                 user=user,
+                                numberOfWords=numberOfWords
                                 )
     else:
         if user is not None:
@@ -193,12 +230,17 @@ def animalDetail(id):
             return render_template("animalDetail.html",
                                     animal_id=animal_id,
                                     user=user,
+                                    numberOfWords=numberOfWords
                                   ) 
 
 @app.route('/food')
 def food():
     user = session.get('username')
-    
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     list_audio = []
     list_word  = []
     list_image = []
@@ -224,17 +266,23 @@ def food():
                             list_pronunciation=list_pronunciation,
                             list_id=list_id,
                             user=user,
+                            numberOfWords=numberOfWords
                            )
 
 @app.route('/foodDetail/<id>', methods = ["GET","POST"])
 def foodDetail(id):
     user = session.get('username')
     food_id = Food.objects.with_id(id)
-   
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     if request.method == "GET":
         return render_template("foodDetail.html",
                                 food_id=food_id,
                                 user=user,
+                                numberOfWords=numberOfWords
                                 )
     else:
         if user is not None:
@@ -253,12 +301,17 @@ def foodDetail(id):
             return render_template("foodDetail.html",
                                     food_id=food_id,
                                     user=user,
+                                    numberOfWords=numberOfWords
                                 ) 
 
 @app.route('/actions')
 def actions():
     user = session.get('username')
-    
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     list_audio = []
     list_word  = []
     list_image = []
@@ -284,18 +337,23 @@ def actions():
                             list_pronunciation=list_pronunciation,
                             list_id=list_id,
                             user=user,
+                            numberOfWords=numberOfWords
                            )
 
 @app.route('/actionsDetail/<id>', methods = ["GET","POST"])
 def actionsDetail(id):
     user = session.get('username')
     actions_id = Actions.objects.with_id(id)
-
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     if request.method == "GET":
-        
         return render_template("actionsDetail.html",
                                 actions_id=actions_id,
                                 user=user,
+                                numberOfWords=numberOfWords
                                 )
     else:
         if user is not None:
@@ -314,26 +372,61 @@ def actionsDetail(id):
             return render_template("actionsDetail.html",
                                     actions_id=actions_id,
                                     user=user,
+                                    numberOfWords=numberOfWords
                                  ) 
 
 @app.route('/video')
 def video():
     user = session.get('username')
     allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
    
     videos = Video.objects()
-    return render_template("videos.html",
+    return render_template("video.html",
                             videos = videos,
                             user = user,
+                            numberOfWords=numberOfWords
                           )
 
 @app.route('/detailVideo/<youtube_id>')
 def detailVideo(youtube_id):
     user = session.get('username')
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
     return render_template("detailVideo.html",
                             youtube_id = youtube_id,
                             user = user,
+                            numberOfWords=numberOfWords
                             )
+
+@app.route('/review')
+def review():
+    user = session.get('username')
+    allWordSave = Reviews.objects()
+    numberOfWords = 0
+    for i in allWordSave:
+        if i.username == user:
+            numberOfWords += 1
+    return render_template("review.html",
+                            user = user,
+                            allWordSave = allWordSave,
+                            numberOfWords=numberOfWords
+                            )
+
+@app.route('/deleteWord/<wordId>')
+def deleteWord(wordId):
+    word_delete_id = Reviews.objects.with_id(wordId)
+    if word_delete_id is not None:
+        word_delete_id.delete()
+        return redirect(url_for('review'))
+    else:
+        return("Word not found")
 
 if __name__ == '__main__':
     app.run(debug=True)
