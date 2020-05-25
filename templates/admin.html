@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+    {% include "meta-data.html" %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top hover-icon">
+        <img src="../../static/images/Capture.PNG" width="auto" height="90px" alt="">
+        <div class="collapse navbar-collapse d-flex justify-content-end " id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a href="{{ url_for('logout') }}" class="nav-link w3-hover-text-blue">
+                        <h3 class="font-weight-bold"> Exit <i class="fas fa-sign-out-alt"></i> </h3>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+    <div class="container">
+
+        <div class="btn-group mt-4">
+            <button type="button" class="btn btn-outline-primary btn-block w3-round-large dropdown-toggle w3-large"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Add new vocabulary
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item w3-hover-text-blue  " href="#">Vegetables and Fruits</a>
+                <a class="dropdown-item w3-hover-text-blue " href="#">Animals</a>
+                <a class="dropdown-item w3-hover-text-blue " href="#">Food</a>
+                <a class="dropdown-item w3-hover-text-blue " href="#">Actions</a>
+                
+            </div>
+        </div>
+        <h1 class="text-center font-weight-bold">Total of vocabulary</h1> <br>
+        <table class="w3-table w3-striped">
+            <tr>
+                <th class="w3-center">STT</th>
+                <th class="w3-center"></th>
+                <th class="w3-center">Audio</th>
+                <th class="w3-center"> Word </th>
+                <th class="w3-center"> Pronunciation</th>
+                <th class="w3-center">Mean </th>
+                <th></th>
+            </tr>
+            {% for w in total_vegetablesAndFruits %}
+            <tr>
+                <td class="w3-center">{{ loop.index }}</td>
+                <td class="w3-center"><img src="{{w.image}}" class="img-thumbnail" alt="" width="15%"></td>
+                <td>
+                    <audio controls>
+                        <source src="{{ w.audio_link }}" type="audio/ogg">
+                    </audio>
+                </td>
+                <td class="w3-center">{{ w.word }}</td>
+                <td class="w3-center">{{ w.pronunciation }}</td>
+                <td class="w3-center">{{ w.mean }}</td>
+                <td class="w3-center"><a href="#"><i
+                            class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
+        
+            {% endfor %}
+            
+            <!-- animal -->
+            {% for wa in total_animals %}
+            <tr>
+                <td class="w3-center">{{ loop.index + x }} </td>
+                <td class="w3-center"><img src="{{wa.image}}" class="img-thumbnail" alt="" width="15%"></td>
+                <td>
+                    <audio controls>
+                        <source src="{{ wa.audio_link }}" type="audio/ogg">
+                    </audio>
+                </td>
+                <td class="w3-center">{{ wa.word }}</td>
+                <td class="w3-center">{{ wa.pronunciation }}</td>
+                <td class="w3-center">{{ wa.mean }}</td>
+                <td class="w3-center"><a href="#"><i
+                            class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
+            </tr>
+            {% endfor %}
+            <!-- food -->
+            {% for wf in total_food %}
+            <tr>
+                <td class="w3-center">{{ loop.index + x + y }} </td>
+                <td class="w3-center"><img src="{{wf.image}}" class="img-thumbnail" alt="" width="15%"></td>
+                <td>
+                    <audio controls>
+                        <source src="{{ wf.audio_link }}" type="audio/ogg">
+                    </audio>
+                </td>
+                <td class="w3-center">{{ wf.word }}</td>
+                <td class="w3-center">{{ wf.pronunciation }}</td>
+                <td class="w3-center">{{ wf.mean }}</td>
+                <td class="w3-center"><a href="#"><i
+                            class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
+            </tr>
+            {% endfor %}
+            <!-- actions -->
+            {% for wact in total_actions %}
+            <tr>
+                <td class="w3-center">{{ loop.index + x + y + z }} </td>
+                <td class="w3-center"><img src="{{wact.image}}" class="img-thumbnail" alt="" width="15%"></td>
+                <td>
+                    <audio controls>
+                        <source src="{{ wact.audio_link }}" type="audio/ogg">
+                    </audio>
+                </td>
+                <td class="w3-center">{{ wact.word }}</td>
+                <td class="w3-center">{{ wact.pronunciation }}</td>
+                <td class="w3-center">{{ wact.mean }}</td>
+                <td class="w3-center"><a href="#"><i
+                            class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <hr style="  border: 3px solid rgb(46, 135, 232); margin-left: 130px" width="80%">
+        <h1 class="text-center font-weight-bold">Video</h1>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <form method = 'post'>
+                    <p>  
+                        <label><b>Link:</b></label>
+                        <input class="w3-input w3-border" name="link" type="text" placeholder="Enter the link of video:" required>
+                    </p>
+                    <button class="btn btn-outline-primary w3-round-large w3-block" style="width:30%">Add</button>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div> <br>
+        <table style="border: black solid 2px;" border="2px">
+            <thead>
+                <th class="text-center font-weight-bold">STT</th>
+                <th class="text-center font-weight-bold">Name</th>
+                <th class="text-center font-weight-bold">Views</th>
+                <th class="text-center font-weight-bold">Link</th>
+                <th class="text-center font-weight-bold">Image</th>
+                <th></th>
+            </thead>
+            <tbody>
+                {% for video in videos %}
+                    <tr>
+                        <td class="text-center">{{ loop.index }}</td>
+                        <td>{{ video.title }}</td>
+                        <td class="text-center">{{ video.views }}</td>
+                        <td>{{ video.link }}</td>
+                        <td>
+                            <img src="{{ video.thumbnail }}" width="200px" height="130px">
+                        </td>
+                        <td class="text-center"> 
+                            <a href="#"><i class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div> <br>
+    <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom float-md-right">
+        <i class="fa fa-arrow-up w3-margin-right"></i>
+    </a>
+</body>
+
+</html>
