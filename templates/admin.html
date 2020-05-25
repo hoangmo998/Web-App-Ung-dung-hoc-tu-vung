@@ -32,10 +32,10 @@
                 Add new vocabulary
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item w3-hover-text-blue  " href="#">Vegetables and Fruits</a>
-                <a class="dropdown-item w3-hover-text-blue " href="#">Animals</a>
-                <a class="dropdown-item w3-hover-text-blue " href="#">Food</a>
-                <a class="dropdown-item w3-hover-text-blue " href="#">Actions</a>
+                <a class="dropdown-item w3-hover-text-blue  " href="{{ url_for('addWordVegetFruits') }}">Vegetables and Fruits</a>
+                <a class="dropdown-item w3-hover-text-blue " href="{{ url_for('addWordAnimals') }}">Animals</a>
+                <a class="dropdown-item w3-hover-text-blue " href="{{ url_for('addWordFood') }}">Food</a>
+                <a class="dropdown-item w3-hover-text-blue " href="{{ url_for('addWordActions') }}">Actions</a>
                 
             </div>
         </div>
