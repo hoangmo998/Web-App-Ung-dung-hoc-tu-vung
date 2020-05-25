@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Word</title>
+    {% include "meta-data.html" %}
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-primary text-center">Add new word</h1>
+        <div class="row">
+            <div class="col-3">
+                <a href="{{ url_for('admin') }}"><img src="../static/images/arrowback.svg" height="50px" width="50%"></a>
+            </div>
+            <div class="col-6">
+                <form method="post" class="w3-container w3-card-4">
+                    <br>
+                    <p>  
+                        <label><b>Image</b></label>
+                        <input class="w3-input w3-border" name="image" type="text" required>
+                    </p>
+                    <p>      
+                        <label><b>Word</b></label>
+                        <input class="w3-input w3-border" name="word" type="text" required>
+                    </p>
+                    <p>  
+                        <label><b>Pronunciation</b></label>
+                        <input class="w3-input w3-border" name="pronunciation" type="text" required>
+                    </p>
+                   
+                    <p>  
+                        <label><b>Mean</b></label>
+                        <input class="w3-input w3-border" name="mean" type="text" required>
+                    </p>
+                   
+                    <p>  
+                        <label><b>Audio of words</b></label>
+                        <input class="w3-input w3-border" name="audio_link" type="text" required>
+                    </p>
+                  <button class="btn btn-outline-primary w3-round-large">Add new words</button>
+                   <br>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+       
+      </div>
+</body>
+</html>

@@ -520,5 +520,71 @@ def deleteVideo(id):
     else:
         return "video not found"
 
+# Add word in adminWord
+@app.route('/addWordVegetFruits', methods = ["GET","POST"])
+def addWordVegetFruits():
+    if request.method == "GET":
+        return render_template("addWord.html")
+    else:
+        form = request.form
+        add_word = Vegetablesfruits(
+            image = form["image"],
+            word = form["word"],
+            pronunciation= form["pronunciation"],
+            mean = form["mean"],
+            audio_link = form["audio_link"],
+        )
+        add_word.save()
+        return redirect(url_for('admin'))
+
+@app.route('/addWordAnimals', methods = ["GET","POST"])
+def addWordAnimals():
+    if request.method == "GET":
+        return render_template("addWord.html")
+    else:
+        form = request.form
+        add_word = Animals(
+            image = form["image"],
+            word = form["word"],
+            pronunciation= form["pronunciation"],
+            mean = form["mean"],
+            audio_link = form["audio_link"],
+        )
+        add_word.save()
+        return redirect(url_for('admin'))
+
+@app.route('/addWordFood', methods = ["GET","POST"])
+def addWordFood():
+    if request.method == "GET":
+        return render_template("addWord.html")
+    else:
+        form = request.form
+        add_word = Food(
+            image = form["image"],
+            word = form["word"],
+            pronunciation= form["pronunciation"],
+            mean = form["mean"],
+            audio_link = form["audio_link"],
+        )
+        add_word.save()
+        return redirect(url_for('admin'))
+
+@app.route('/addWordActions', methods = ["GET","POST"])
+def addWordActions():
+    if request.method == "GET":
+        return render_template("addWord.html")
+    else:
+        form = request.form
+        add_word = Actions(
+            image = form["image"],
+            word = form["word"],
+            pronunciation= form["pronunciation"],
+            mean = form["mean"],
+            audio_link = form["audio_link"],
+        )
+        add_word.save()
+        return redirect(url_for('admin'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
