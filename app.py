@@ -474,7 +474,51 @@ def admin():
             video.save()
             return redirect(url_for('admin'))
 
+# delete word in adminWord
+@app.route('/deleteVegetablesFruits/<id>')
+def deleteVegetablesFruits(id):
+    word_delete = Vegetablesfruits.objects.with_id(id)
+    if word_delete is not None:
+        word_delete.delete()
+        return redirect(url_for('admin'))
+    else:
+        return "Word not found"
 
+@app.route('/deleteAnimals/<id>')
+def deleteAnimals(id):
+    word_delete = Animals.objects.with_id(id)
+    if word_delete is not None:
+        word_delete.delete()
+        return redirect(url_for('admin'))
+    else:
+        return "Word not found"
+
+@app.route('/deleteFood/<id>')
+def deleteFood(id):
+    word_delete = Food.objects.with_id(id)
+    if word_delete is not None:
+        word_delete.delete()
+        return redirect(url_for('admin'))
+    else:
+        return "Word not found"
+
+@app.route('/deleteActions/<id>')
+def deleteActions(id):
+    word_delete = Actions.objects.with_id(id)
+    if word_delete is not None:
+        word_delete.delete()
+        return redirect(url_for('admin'))
+    else:
+        return "Word not found"
+
+@app.route('/deleteVideo/<id>')
+def deleteVideo(id):
+    video_id = Video.objects.with_id(id)
+    if video_id is not None:
+        video_id.delete()
+        return redirect(url_for('admin'))
+    else:
+        return "video not found"
 
 if __name__ == '__main__':
     app.run(debug=True)

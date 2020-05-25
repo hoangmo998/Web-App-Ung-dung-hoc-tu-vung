@@ -62,7 +62,7 @@
                 <td class="w3-center">{{ w.word }}</td>
                 <td class="w3-center">{{ w.pronunciation }}</td>
                 <td class="w3-center">{{ w.mean }}</td>
-                <td class="w3-center"><a href="#"><i
+                <td class="w3-center"><a href="{{ url_for('deleteVegetablesFruits',id = w.id) }}"><i
                             class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
         
             {% endfor %}
@@ -80,7 +80,7 @@
                 <td class="w3-center">{{ wa.word }}</td>
                 <td class="w3-center">{{ wa.pronunciation }}</td>
                 <td class="w3-center">{{ wa.mean }}</td>
-                <td class="w3-center"><a href="#"><i
+                <td class="w3-center"><a href="{{ url_for('deleteAnimals',id = wa.id) }}"><i
                             class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
             </tr>
             {% endfor %}
@@ -97,7 +97,7 @@
                 <td class="w3-center">{{ wf.word }}</td>
                 <td class="w3-center">{{ wf.pronunciation }}</td>
                 <td class="w3-center">{{ wf.mean }}</td>
-                <td class="w3-center"><a href="#"><i
+                <td class="w3-center"><a href="{{ url_for('deleteFood',id = wf.id) }}"><i
                             class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
             </tr>
             {% endfor %}
@@ -114,7 +114,7 @@
                 <td class="w3-center">{{ wact.word }}</td>
                 <td class="w3-center">{{ wact.pronunciation }}</td>
                 <td class="w3-center">{{ wact.mean }}</td>
-                <td class="w3-center"><a href="#"><i
+                <td class="w3-center"><a href="{{ url_for('deleteActions',id = wact.id) }}"><i
                             class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a></td>
             </tr>
             {% endfor %}
@@ -155,7 +155,7 @@
                             <img src="{{ video.thumbnail }}" width="200px" height="130px">
                         </td>
                         <td class="text-center"> 
-                            <a href="#"><i class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a>
+                            <a href="{{ url_for('deleteVideo',id = video.id) }}"><i class="fa fa-trash text-dark w3-hover-text-red"> Delete</i></a>
                         </td>
                     </tr>
                 {% endfor %}
