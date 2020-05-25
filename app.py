@@ -428,5 +428,53 @@ def deleteWord(wordId):
     else:
         return("Word not found")
 
+@app.route('/admin', methods = ['GET','POST'])
+def admin():
+    user = session.get('username')
+    if user is None:
+        return redirect(url_for('login'))
+    else:
+        total_vegetablesAndFruits = Vegetablesfruits.objects()
+        total_animals = Animals.objects()
+        total_food = Food.objects()
+        total_actions = Actions.objects()
+        x = len(total_vegetablesAndFruits)
+        y = len(total_animals)
+        z = len(total_food)
+        if request.method == 'GET':
+            videos = Video.objects()
+            return render_template("admin.html",
+                                    total_vegetablesAndFruits = total_vegetablesAndFruits,
+                                    total_animals = total_animals,
+                                    total_food = total_food,
+                                    total_actions = total_actions,
+                                    x = x,
+                                    y = y,
+                                    z = z,
+                                    videos = videos )
+        elif request.method == 'POST':
+            form = request.form
+            link = form['link']
+
+            ydl = YoutubeDL()
+
+            data = ydl.extract_info(link, download=False)
+
+            title = data['title']
+            thumbnail = data['thumbnail']
+            views = data['view_count']
+            youtube_id = data['id']
+            link = link
+            video = Video( title = title,
+                            thumbnail = thumbnail,
+                            views = views,
+                            youtube_id = youtube_id,
+                            link = link,
+                         )
+            video.save()
+            return redirect(url_for('admin'))
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
